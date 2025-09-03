@@ -74,7 +74,8 @@ class Car {
                 System.out.println("The change was successful!");
             }
             else {
-                System.out.println("Unknown command. Changing failed. Please, enter the correct one: ");
+                changed = true;
+                System.out.println("Unknown command. Changing failed.");
             }
 
         }
