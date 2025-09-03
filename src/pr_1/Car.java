@@ -39,45 +39,36 @@ class Car {
     void Getter(String cmd) {
         Scanner in = new Scanner(System.in);
 
-        boolean changed = false;
-        while (!changed) {
-            if (cmd.equalsIgnoreCase("year")) {
-                System.out.print("New value of year: ");
-                int changed_property = in.nextInt();
+        if (cmd.equalsIgnoreCase("year")) {
+            System.out.print("New value of year: ");
+            int changed_property = in.nextInt();
 
-                this.year = changed_property;
-                changed = true;
-                System.out.println("The change was successful!");
-            }
-            else if (cmd.equalsIgnoreCase("model")) {
-                System.out.print("New model: ");
-                String changed_property = in.nextLine();
+            this.year = changed_property;
+            System.out.println("The change was successful!");
+        }
+        else if (cmd.equalsIgnoreCase("model")) {
+            System.out.print("New model: ");
+            String changed_property = in.nextLine();
 
-                this.model = changed_property;
-                changed = true;
-                System.out.println("The change was successful!");
-            }
-            else if (cmd.equalsIgnoreCase("license")) {
-                System.out.print("New license: ");
-                String changed_property = in.nextLine();
+            this.model = changed_property;
+            System.out.println("The change was successful!");
+        }
+        else if (cmd.equalsIgnoreCase("license")) {
+            System.out.print("New license: ");
+            String changed_property = in.nextLine();
 
-                this.license = changed_property;
-                changed = true;
-                System.out.println("The change was successful!");
-            }
-            else if (cmd.equalsIgnoreCase("color")) {
-                System.out.print("New color: ");
-                String changed_property = in.nextLine();
+            this.license = changed_property;
+            System.out.println("The change was successful!");
+        }
+        else if (cmd.equalsIgnoreCase("color")) {
+            System.out.print("New color: ");
+            String changed_property = in.nextLine();
 
-                this.color = changed_property;
-                changed = true;
-                System.out.println("The change was successful!");
-            }
-            else {
-                changed = true;
-                System.out.println("Unknown command. Changing failed.");
-            }
-
+            this.color = changed_property;
+            System.out.println("The change was successful!");
+        }
+        else {
+            System.out.println("Unknown command. Changing failed.");
         }
 
         System.out.println();
