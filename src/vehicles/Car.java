@@ -3,9 +3,9 @@ package vehicles;
 import java.util.Scanner;
 
 public class Car {
-    String model = "Mazda";
-    String license = "М999ММ";
-    String color = "Dark-Blue";
+    public String model = "Mazda";
+    public String license = "М999ММ";
+    public String color = "Dark-Blue";
     int year = 2024;
 
     private String ownerName;
@@ -13,7 +13,6 @@ public class Car {
     protected String engineType;
 
     public Car() {
-        To_String();
     }
 
     public Car(String model, String license, String color, int year) {
@@ -21,21 +20,20 @@ public class Car {
         this.license = license;
         this.color = color;
         this.year = year;
-
-        To_String();
     }
 
     public Car(String color) {
         this.color = color;
-
-        To_String();
     }
 
     public void To_String() {
         System.out.println("Model: " + this.model);
         System.out.println("License: " + this.license);
         System.out.println("Color: " + this.color);
-        System.out.println("year: " + this.year);
+        System.out.println("Year: " + this.year);
+        System.out.println("Owner's name: " + this.ownerName);
+        System.out.println("Insurance number: " + this.insuranceNumber);
+        System.out.println("Engine type: " + this.engineType);
 
         System.out.println("------------------------------------------------");
     }
