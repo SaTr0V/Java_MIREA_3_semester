@@ -2,33 +2,37 @@ package vehicles;
 
 import java.util.Scanner;
 
-
 public class ElectricCar extends Car {
     private double batteryCapacity;
 
     public ElectricCar(String model, String license, String color, int year, double batteryCapacity) {
         super(model, license, color, year);
-        this.engineType = "Electric"; // Устанавливаем тип двигателя
+        this.engineType = "Electric";
         this.batteryCapacity = batteryCapacity;
     }
 
-    // Геттер и сеттер для batteryCapacity
+    // Специализированный тип
+    @Override
+    public String vehicleType() {
+        return "Electric Car";
+    }
+
+    // Геттер и сеттер
     public double getBatteryCapacity() {
         return batteryCapacity;
     }
 
     public void setBatteryCapacity() {
-        System.out.print("Set new charge: ");
+        System.out.print("Set new battery capacity: ");
         Scanner in = new Scanner(System.in);
-
-        batteryCapacity = in.nextDouble();
+        this.batteryCapacity = in.nextDouble();
     }
 
-    // Переопределяем метод To_String для отображения информации об электромобиле
+    // Переопределяем метод To_String
     @Override
     public void To_String() {
-        super.To_String(); // родительский метод
-        System.out.println("Properties, only specific for this car:");
+        super.To_String();
+        System.out.println("Properties specific for electric car:");
         System.out.println("Battery Capacity: " + batteryCapacity + " kWh");
         System.out.println("------------------------------------------------");
     }
@@ -36,7 +40,7 @@ public class ElectricCar extends Car {
     // Специфичный метод для электромобиля
     public void chargeBattery() {
         setBatteryCapacity();
-        System.out.println("Charging battery of " + model + "...");
-        System.out.println("Battery at " + batteryCapacity + " kWh capacity");
+        System.out.println("Charging battery of " + getModel() + "...");
+        System.out.println("Battery at " + batteryCapacity + " kWh");
     }
 }

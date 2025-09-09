@@ -1,72 +1,49 @@
 package app;
 
+import vehicles.Vehicle;
 import vehicles.Car;
 import vehicles.ElectricCar;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("ДЕМОНСТРАЦИЯ НАСЛЕДОВАНИЯ И ИНКАПСУЛЯЦИИ\n");
+        System.out.println("ТЕСТИРОВАНИЕ СИСТЕМЫ ТРАНСПОРТНЫХ СРЕДСТВ\n");
 
-        // Обычный автомобиль
-        System.out.println("1. СОЗДАНИЕ ОБЫЧНОГО АВТОМОБИЛЯ:");
+        System.out.println("1. СОЗДАНИЕ ОБЫЧНОГО АВТОМОБИЛЯ (через Vehicle):");
+        Vehicle car = new Car("Audi", "A999AA", "Green", 2009);
+        car.To_String();
 
-        Car regularCar = new Car("Audi", "A999AA", "Green", 2009);
-        regularCar.To_String();
+        System.out.println("\n2. СОЗДАНИЕ ЭЛЕКТРОМОБИЛЯ (через Vehicle):");
+        Vehicle e_car = new ElectricCar("Tesla Model S", "E001EE", "White", 2025, 100.0);
+        e_car.To_String();
 
-        System.out.println("\n2. ДОСТУП К ПОЛЯМ ОБЫЧНОГО АВТОМОБИЛЯ:");
+        System.out.println("\n3. ИЗМЕНЕНИЕ СВОЙСТВ ЧЕРЕЗ СЕТТЕРЫ:");
 
-        System.out.println("Public property model: " + regularCar.model);
-        System.out.println("Public property color: " + regularCar.color);
+        // Изменяем свойства через методы родительского класса
+        car.setColor();
+        car.setYear();
+        car.setOwnerName();
+        car.setEngineType();
 
-        // regularCar.ownerName - недоступно напрямую, но можно использовать геттер
-        regularCar.setName();
+        System.out.println("\nUpdated info:");
+        car.To_String();
 
-        // Аналогично с regularCar.engineType
-        regularCar.setEngineType();
+        System.out.println("\n4. РАБОТА С ЭЛЕКТРОМОБИЛЕМ:");
+        ElectricCar electricCar = (ElectricCar) e_car;
 
-        // Отображение всей информации о машине
-        System.out.println("\nCar info:");
-        System.out.println("------------------------------------------------");
-        regularCar.To_String();
-
-        System.out.println("\n3. СОЗДАНИЕ ЭЛЕКТРОМОБИЛЯ:");
-
-        ElectricCar electricCar = new ElectricCar("Tesla Model S", "E001EE", "White", 2025, 100.0);
-        electricCar.To_String();
-
-        System.out.println("\n4. ДЕМОНСТРАЦИЯ НАСЛЕДОВАНИЯ:");
-
-        // Все открытые методы и поля Car доступны в ElectricCar
-        System.out.println("Inherited property model: " + electricCar.model);
-        System.out.println("Inherited property color: " + electricCar.color);
-
-        // Защищенное поле доступно в подклассе
-        System.out.println("Protected поле engineType: " + electricCar.getEngineType());
-
-        // Вызов унаследованного метода
-        electricCar.setName();
-
-        // Отображение всей информации о машине
-        System.out.println("\nCar info:");
-        System.out.println("------------------------------------------------");
-        electricCar.To_String();;
-
-        // Вызов специфичного метода электромобиля
+        // Используем специфичные методы ElectricCar
         electricCar.chargeBattery();
 
-        System.out.println("------------------------------------------------" + "\n");
+        System.out.println("\nInfo after recharge:");
+        electricCar.To_String();
 
-        System.out.println("5. ПРОВЕРКА ИНКАПСУЛЯЦИИ:");
+        System.out.println("\n5. ДОСТУП К СВОЙСТВАМ ЧЕРЕЗ ГЕТТЕРЫ:");
+        System.out.println("Vehicle type: " + car.vehicleType());
+        System.out.println("Model: " + car.getModel());
+        System.out.println("Color: " + car.getColor());
+        System.out.println("Engine type: " + car.getEngineType());
 
-        // Попытка доступа к приватным полям (вызовет ошибку компиляции)
-        // System.out.println(tesla.batteryCapacity); // Ошибка - private поле
-        // System.out.println(tesla.ownerName); // Ошибка - private поле
-
-        // Правильный доступ через геттеры
+        System.out.println("\nElectric car:");
+        System.out.println("Vehicle type: " + electricCar.vehicleType());
         System.out.println("Battery capacity: " + electricCar.getBatteryCapacity() + " kWh");
-
-        // Изменение через сеттер
-        electricCar.setBatteryCapacity();
-        System.out.println("New battery capacity: " + electricCar.getBatteryCapacity() + " kWh");
     }
 }
