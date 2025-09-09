@@ -1,3 +1,6 @@
+package app;
+
+import vehicles.Car;
 import java.util.Scanner;
 
 public class Main {
@@ -20,23 +23,8 @@ public class Main {
         System.out.println("------------------------------------------------");
 
         Car car_1 = new Car(model, license, color, year);
-        Car car_2 = new Car();
-        Car car_3 = new Car(color);
 
-        System.out.println("Do you wish to change one of the properties? (yes/no)");
-
-        in.nextLine();
-        String cmd = in.nextLine();
-        if (cmd.equalsIgnoreCase("yes")) {
-            System.out.println("Choose the property you wish to change: model, license, color, year.");
-            cmd = in.nextLine();
-            car_1.Getter(cmd);
-        }
-        else if (cmd.equalsIgnoreCase("no")) {
-            System.out.println("End.");
-        }
-        else {
-            System.out.println("Unknown command.");
-        }
+        car_1.setEngineType();
+        System.out.println("The car's engine type is " + car_1.getEngineType());
     }
 }

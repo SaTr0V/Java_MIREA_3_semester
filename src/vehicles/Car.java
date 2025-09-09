@@ -1,16 +1,22 @@
+package vehicles;
+
 import java.util.Scanner;
 
-class Car {
+public class Car {
     String model = "Mazda";
     String license = "М999ММ";
     String color = "Dark-Blue";
     int year = 2024;
 
-    Car() {
+    private String ownerName;
+    private String insuranceNumber;
+    protected String engineType;
+
+    public Car() {
         To_String();
     }
 
-    Car(String model, String license, String color, int year) {
+    public Car(String model, String license, String color, int year) {
         this.model = model;
         this.license = license;
         this.color = color;
@@ -19,13 +25,13 @@ class Car {
         To_String();
     }
 
-    Car(String color) {
+    public Car(String color) {
         this.color = color;
 
         To_String();
     }
 
-    void To_String() {
+    public void To_String() {
         System.out.println("Model: " + this.model);
         System.out.println("License: " + this.license);
         System.out.println("Color: " + this.color);
@@ -34,7 +40,7 @@ class Car {
         System.out.println("------------------------------------------------");
     }
 
-    void Getter(String cmd) {
+    public void Setter(String cmd) {
         Scanner in = new Scanner(System.in);
 
         if (cmd.equalsIgnoreCase("year")) {
@@ -72,5 +78,38 @@ class Car {
         System.out.println();
         System.out.println("------------------------------------------------");
         this.To_String();
+    }
+
+    public void setName() {
+        System.out.print("Set owner's name: ");
+        Scanner in = new Scanner(System.in);
+
+        ownerName = in.nextLine();
+    }
+
+    public String getName() {
+        return ownerName;
+    }
+
+    public void setInsuranceNumber() {
+        System.out.print("Set insurance number: ");
+        Scanner in = new Scanner(System.in);
+
+        insuranceNumber = in.nextLine();
+    }
+
+    public String getInsuranceNumber() {
+        return insuranceNumber;
+    }
+
+    public void setEngineType() {
+        System.out.print("Set engine type: ");
+        Scanner in = new Scanner(System.in);
+
+        engineType = in.nextLine();
+    }
+
+    public String getEngineType() {
+        return engineType;
     }
 }
