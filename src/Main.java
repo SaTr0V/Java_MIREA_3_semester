@@ -30,7 +30,7 @@ public class Main {
         if (cmd.equalsIgnoreCase("yes")) {
             System.out.println("Choose the property you wish to change: model, license, color, year.");
             cmd = in.nextLine();
-            car_1.Getter(cmd);
+            car_1.Setter(cmd);
         }
         else if (cmd.equalsIgnoreCase("no")) {
             System.out.println("End.");

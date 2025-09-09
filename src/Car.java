@@ -34,7 +34,7 @@ class Car {
         System.out.println("------------------------------------------------");
     }
 
-    void Getter(String cmd) {
+    void Setter(String cmd) {
         Scanner in = new Scanner(System.in);
 
         if (cmd.equalsIgnoreCase("year")) {
