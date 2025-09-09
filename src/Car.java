@@ -1,6 +1,3 @@
-package pr_1;
-
-
 public class Car {
     String model = "Mazda";
     String license = "М999ММ";
