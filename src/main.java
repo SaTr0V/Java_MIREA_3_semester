@@ -4,7 +4,7 @@ public class main {
     public static void main(String[] args) {
         System.out.println("TRIANGLE PROGRAM");
 
-        Triangle triangle;  // объявление объекта до конструкции if...else, иначе будет невозможно с ним работать
+        Triangle triangle = null;  // инициализация объекта до конструкции if...else, иначе ошибка
 
         System.out.println("Do you wish to create your own triangle or use a default one?\n" +
                 "Type 1 to create a triangle.\n" +
@@ -22,16 +22,15 @@ public class main {
             System.out.print("Enter side 3 length: ");
             double side3 = in.nextDouble();
 
-            double max_side = Math.max(Math.max(side1, side2), side3);
-            if (max_side >= (side1 + side2 + side3) - max_side) {
-                System.out.println("Not able to create this triangle." +
-                        " The biggest side must be less than a sum of other two.");
-
+            try {
+                triangle = new Triangle(side1, side2, side3);
+            }
+            catch (IllegalTriangleException e) {
+                System.out.println("Error: " + e.getMessage());
                 System.exit(-1);
             }
-
-            triangle = new Triangle(side1, side2, side3);
-        } else {
+        }
+        else {
             triangle = new Triangle();
         }
 

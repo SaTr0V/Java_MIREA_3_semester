@@ -5,7 +5,12 @@ public class Triangle extends GeometricObject {
 
     public Triangle() { };
 
-    public Triangle(double side1, double side2, double side3) {
+    public Triangle(double side1, double side2, double side3) throws IllegalTriangleException {
+        double max_side = Math.max(Math.max(side1, side2), side3);
+        if (max_side >= (side1 + side2 + side3) - max_side) {  // проверка неравенства треугольника
+            throw new IllegalTriangleException("Not able to create this triangle." +
+                    " The biggest side must be less than a sum of other two.");
+        }
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
