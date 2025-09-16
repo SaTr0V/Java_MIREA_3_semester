@@ -24,7 +24,7 @@ public abstract class Vehicle {
     public abstract String vehicleType();
 
     // Метод для вывода информации
-    public void To_String() {
+    public void to_String() {
         System.out.println("Vehicle Type: " + vehicleType());
         System.out.println("Model: " + this.model);
         System.out.println("License: " + this.license);

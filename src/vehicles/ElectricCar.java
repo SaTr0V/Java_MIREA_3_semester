@@ -2,7 +2,7 @@ package vehicles;
 
 import java.util.Scanner;
 
-public class ElectricCar extends Car {
+public class ElectricCar extends Car implements ElectricVehicle {
     private double batteryCapacity;
 
     public ElectricCar(String model, String license, String color, int year, double batteryCapacity) {
@@ -30,8 +30,8 @@ public class ElectricCar extends Car {
 
     // Переопределяем метод To_String
     @Override
-    public void To_String() {
-        super.To_String();
+    public void to_String() {
+        super.to_String();
         System.out.println("Properties specific for electric car:");
         System.out.println("Battery Capacity: " + batteryCapacity + " kWh");
         System.out.println("------------------------------------------------");

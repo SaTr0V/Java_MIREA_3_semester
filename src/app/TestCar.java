@@ -9,41 +9,32 @@ public class TestCar {
         System.out.println("ТЕСТИРОВАНИЕ СИСТЕМЫ ТРАНСПОРТНЫХ СРЕДСТВ\n");
 
         System.out.println("1. СОЗДАНИЕ ОБЫЧНОГО АВТОМОБИЛЯ (через Vehicle):");
-        Vehicle car = new Car("Audi", "A999AA", "Green", 2009);
-        car.To_String();
+        Car car = new Car("Audi", "A999AA", "Green", 2009);
+        car.to_String();
 
         System.out.println("\n2. СОЗДАНИЕ ЭЛЕКТРОМОБИЛЯ (через Vehicle):");
-        Vehicle e_car = new ElectricCar("Tesla Model S", "E001EE", "White", 2025, 100.0);
-        e_car.To_String();
+        ElectricCar e_car = new ElectricCar("Tesla Model S", "E001EE", "White", 2025, 100.0);
+        e_car.to_String();
 
         System.out.println("\n3. ИЗМЕНЕНИЕ СВОЙСТВ ЧЕРЕЗ СЕТТЕРЫ:");
 
         // Изменяем свойства через методы родительского класса
-        car.setColor();
+        System.out.println("Set new properties for an ordinary car:");
         car.setYear();
         car.setOwnerName();
-        car.setEngineType();
+        car.setInsuranceNumber();
 
+        System.out.println("\nSet new properties for an electric car:");
+        e_car.setYear();
+        e_car.setOwnerName();
+        e_car.setInsuranceNumber();
+
+        System.out.println("\nElectric car's battery capacity: " + e_car.getBatteryCapacity() + " kWh");
+
+        System.out.println("\n4. ВЫВОД ИНФОРМАЦИИ О ТРАНСПОРТНЫХ СРЕДСТВАХ:");
         System.out.println("\nUpdated info:");
-        car.To_String();
-
-        System.out.println("\n4. РАБОТА С ЭЛЕКТРОМОБИЛЕМ:");
-        ElectricCar electricCar = (ElectricCar) e_car;
-
-        // Используем специфичные методы ElectricCar
-        electricCar.chargeBattery();
-
-        System.out.println("\nInfo after recharge:");
-        electricCar.To_String();
-
-        System.out.println("\n5. ДОСТУП К СВОЙСТВАМ ЧЕРЕЗ ГЕТТЕРЫ:");
-        System.out.println("Vehicle type: " + car.vehicleType());
-        System.out.println("Model: " + car.getModel());
-        System.out.println("Color: " + car.getColor());
-        System.out.println("Engine type: " + car.getEngineType());
-
-        System.out.println("\nElectric car:");
-        System.out.println("Vehicle type: " + electricCar.vehicleType());
-        System.out.println("Battery capacity: " + electricCar.getBatteryCapacity() + " kWh");
+        System.out.println("------------------------------------------------");
+        car.to_String();
+        e_car.to_String();
     }
 }
