@@ -4,7 +4,7 @@ import vehicles.Vehicle;
 import vehicles.Car;
 import vehicles.ElectricCar;
 
-public class Main {
+public class TestCar {
     public static void main(String[] args) {
         System.out.println("ТЕСТИРОВАНИЕ СИСТЕМЫ ТРАНСПОРТНЫХ СРЕДСТВ\n");
 
