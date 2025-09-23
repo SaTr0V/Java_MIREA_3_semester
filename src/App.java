@@ -36,7 +36,7 @@ public class App {
             month.displayInfo();
         }
         catch (Exception e) {
-            System.out.println("Ошибка: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }
