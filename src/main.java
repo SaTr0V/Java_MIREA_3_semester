@@ -1,31 +1,31 @@
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class main {
     public static void main(String[] args) {
-        String[] months = {"январь", "февраль", "март", "апрель", "май",
-                            "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"};
-        int[] dom = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
         Scanner in = new Scanner(System.in);
 
         try {
-            System.out.print("Введите целое число от 1 до 12: ");
-            int month_number = in.nextInt();
+            System.out.print("Введите годовую процентную ставку (например, 8.25): ");
+            double annualInterestRate = in.nextDouble();
 
-            // Проверка, входит ли введенное число в диапазон
-            if (month_number < 1 || month_number > 12) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
+            System.out.print("Введите срок кредита в годах: ");
+            int numberOfYears = in.nextInt();
 
-            System.out.println("Месяц: " + months[month_number - 1]);
-            System.out.println("Количество дней: " + dom[month_number - 1]);
+            System.out.print("Введите сумму кредита: ");
+            double loanAmount = in.nextDouble();
+
+            Loan loan = new Loan(annualInterestRate, numberOfYears, loanAmount);
+
+            System.out.println("Дата получения кредита: " + loan.getLoanDate());
+            System.out.println("Ежемесячный платеж: " + loan.getMonthlyPayment());
+            System.out.println("Общая сумма платежа: " + loan.getTotalPayment());
+
         }
-        catch (InputMismatchException e) {
-            System.out.println("Ошибка: введено не целое число.");
+        catch (IllegalArgumentException e) {
+            System.out.println("Ошибка: " + e.getMessage());
         }
-        catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Недопустимое число. Введите число от 1 до 12.");
+        catch (Exception e) {
+            System.out.println("Произошла ошибка при вводе данных");
         }
     }
 }
