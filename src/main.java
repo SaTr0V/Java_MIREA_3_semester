@@ -32,7 +32,7 @@ public class main {
                 System.exit(-1);
             }
         }
-        else if (cmd.equalsIgnoreCase("no")) {
+        else if (cmd.equalsIgnoreCase("2")) {
             triangle = new Triangle();
         }
 
