@@ -15,7 +15,7 @@ public class Rectangle extends GeometricObject {
     }
 
     public double getWidth() { return width; }
-    public double getHeight() { return width; }
+    public double getHeight() { return height; }
     public double getPerimeter() { return 2 * (width + height); }
     public double getArea() { return width * height; }
 
