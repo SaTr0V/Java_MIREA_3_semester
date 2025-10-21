@@ -3,7 +3,6 @@ public class GenericStack<E> {
     private int size;
     private static final int INITIAL_CAPACITY = 10;
 
-    @SuppressWarnings("unchecked")
     public GenericStack() {
         elements = (E[]) new Object[INITIAL_CAPACITY];
         size = 0;
@@ -40,7 +39,6 @@ public class GenericStack<E> {
         return size == 0;
     }
 
-    @SuppressWarnings("unchecked")
     private void resize() {
         int newCapacity = elements.length * 2;
         E[] newArray = (E[]) new Object[newCapacity];
