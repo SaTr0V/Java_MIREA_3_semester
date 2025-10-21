@@ -5,80 +5,92 @@ public class main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Тестирование GenericStack с массивом - задание 1
-        System.out.println("Задание 1. GenericStack с массивом");
-        GenericStack<Integer> arrayStack = new GenericStack<>();
+        // Задание 1.1 - MyStack с композицией
+        System.out.println("Задание 1.1. MyStack с композицией");
+        MyStack stack1 = new MyStack();
+        stack1.push("Первый");
+        stack1.push("Второй");
+        stack1.push("Третий");
 
-        // Тестирование автоматического увеличения массива
-        for (int i = 1; i <= 15; i++) {
-            arrayStack.push(i * 10);
-        }
+        System.out.println("Стек: " + stack1);
+        System.out.println("Размер: " + stack1.getSize());
+        System.out.println("Верхний элемент: " + stack1.peek());
+        System.out.println("Извлечен: " + stack1.pop());
+        System.out.println("Стек после извлечения: " + stack1);
 
-        System.out.println("Стек после добавления 15 элементов: " + arrayStack);
-        System.out.println("Размер стека: " + arrayStack.getSize());
-        System.out.println("Верхний элемент: " + arrayStack.peek());
-
-        // Извлечение нескольких элементов
-        System.out.println("Извлеченные элементы:");
-        for (int i = 0; i < 5; i++) {
-            System.out.print(arrayStack.pop() + " ");
-        }
-        System.out.println("\nСтек после извлечения 5 элементов: " + arrayStack);
-
-        // Тестирование GenericStack с наследованием от ArrayList - задание 2
-        System.out.println("\nЗадание 2. GenericStack с наследованием от ArrayList");
+        // Задание 1.2 - MyStack с наследованием
+        System.out.println("\nЗадание 1.2 - MyStack с наследованием от ArrayList");
         System.out.println("Введите 5 строк:");
 
-        GenericStackInherited<String> inheritedStack = new GenericStackInherited<>();
+        MyStackInherited stack2 = new MyStackInherited();
 
-        // Ввод 5 строк от пользователя
         for (int i = 1; i <= 5; i++) {
             System.out.print("Строка " + i + ": ");
             String input = scanner.nextLine();
-            inheritedStack.push(input);
+            stack2.push(input);
         }
 
-        // Вывод строк в обратном порядке
         System.out.println("\nСтроки в обратном порядке:");
-        while (!inheritedStack.isEmpty()) {
-            System.out.println(inheritedStack.pop());
+        while (!stack2.isEmpty()) {
+            System.out.println(stack2.pop());
         }
 
-        // Вывод UML-диаграммы для второго задания
-        System.out.println("\nUML-диаграмма для задания 2:");
-        System.out.println("┌────────────────────┐");
-        System.out.println("│   ArrayList<E>     │");
-        System.out.println("├────────────────────┤");
-        System.out.println("│ +add(e: E)         │");
-        System.out.println("│ +get(index: int)   │");
-        System.out.println("│ +remove(index: int)│");
-        System.out.println("│ +size(): int       │");
-        System.out.println("│ +isEmpty(): boolean│");
-        System.out.println("└────────────────────┘");
+        // Задание 2 - Глубокая копия
+        System.out.println("\nЗадание 2 - Глубокая копия");
+        MyStackDeepCopy originalStack = new MyStackDeepCopy();
+        originalStack.push("Оригинал 1");
+        originalStack.push("Оригинал 2");
+
+        MyStackDeepCopy clonedStack = originalStack.clone();
+
+        System.out.println("Оригинальный стек: " + originalStack);
+        System.out.println("Клонированный стек: " + clonedStack);
+        System.out.println("Разные объекты: " + (originalStack != clonedStack));
+
+        // UML-диаграмма для задания 3
+        System.out.println("\nUML-диаграмма");
+        System.out.println("┌───────────────────┐");
+        System.out.println("│   ArrayList       │");
+        System.out.println("├───────────────────┤");
+        System.out.println("│ +add()            │");
+        System.out.println("│ +get()            │");
+        System.out.println("│ +remove()         │");
+        System.out.println("│ +size()           │");
+        System.out.println("└───────────────────┘");
         System.out.println("         △");
-        System.out.println("         │ extends");
-        System.out.println("┌─────────────────────┐");
-        System.out.println("│GenericStackInherited│");
-        System.out.println("├─────────────────────┤");
-        System.out.println("│ +push(o: E): void   │");
-        System.out.println("│ +pop(): E           │");
-        System.out.println("│ +peek(): E          │");
-        System.out.println("│ +getSize(): int     │");
-        System.out.println("└─────────────────────┘");
+        System.out.println("         │");
+        System.out.println("┌───────────────────┐");
+        System.out.println("│  MyStackInherited │");
+        System.out.println("├───────────────────┤");
+        System.out.println("│ +push()           │");
+        System.out.println("│ +pop()            │");
+        System.out.println("│ +peek()           │");
+        System.out.println("│ +getSize()        │");
+        System.out.println("└───────────────────┘");
         System.out.println();
-        System.out.println("┌────────────────────┐");
-        System.out.println("│   GenericStack<E>  │");
-        System.out.println("├────────────────────┤");
-        System.out.println("│ -elements: E[]     │");
-        System.out.println("│ -size: int         │");
-        System.out.println("├────────────────────┤");
-        System.out.println("│ +push(o: E): void  │");
-        System.out.println("│ +pop(): E          │");
-        System.out.println("│ +peek(): E         │");
-        System.out.println("│ +getSize(): int    │");
-        System.out.println("│ +isEmpty(): boolean│");
-        System.out.println("│ -resize(): void    │");
-        System.out.println("└────────────────────┘");
+        System.out.println("┌───────────────────┐");
+        System.out.println("│     MyStack       │");
+        System.out.println("├───────────────────┤");
+        System.out.println("│ -list: ArrayList  │");
+        System.out.println("├───────────────────┤");
+        System.out.println("│ +push()           │");
+        System.out.println("│ +pop()            │");
+        System.out.println("│ +peek()           │");
+        System.out.println("│ +getSize()        │");
+        System.out.println("│ +isEmpty()        │");
+        System.out.println("└───────────────────┘");
+        System.out.println();
+        System.out.println("┌───────────────────┐");
+        System.out.println("│  MyStackDeepCopy  │");
+        System.out.println("├───────────────────┤");
+        System.out.println("│ -list: ArrayList  │");
+        System.out.println("├───────────────────┤");
+        System.out.println("│ +push()           │");
+        System.out.println("│ +pop()            │");
+        System.out.println("│ +peek()           │");
+        System.out.println("│ +clone():         │");
+        System.out.println("│   MyStackDeepCopy │");
+        System.out.println("└───────────────────┘");
 
         scanner.close();
     }

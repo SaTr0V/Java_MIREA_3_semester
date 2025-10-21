@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
-public class GenericStackInherited<E> extends ArrayList<E> {
+public class MyStackInherited extends ArrayList<Object> {
 
-    public GenericStackInherited() {
+    public MyStackInherited() {
         super();
     }
 
@@ -14,23 +14,23 @@ public class GenericStackInherited<E> extends ArrayList<E> {
         return size();
     }
 
-    public E peek() {
+    public Object peek() {
         if (isEmpty()) {
             return null;
         }
         return get(getSize() - 1);
     }
 
-    public E pop() {
+    public Object pop() {
         if (isEmpty()) {
             return null;
         }
-        E o = get(getSize() - 1);
+        Object o = get(getSize() - 1);
         remove(getSize() - 1);
         return o;
     }
 
-    public void push(E o) {
+    public void push(Object o) {
         add(o);
     }
 
