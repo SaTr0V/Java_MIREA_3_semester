@@ -2,7 +2,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AppSettings {
-    // Заккрытая статическая переменная для хранения единственного экземпляра
+    // Заккрытая статическая переменная для хранения единственного экземпляра; volatile для тестирования в многопотоке
     private static volatile AppSettings instance;
 
     // Хранилище настроек
