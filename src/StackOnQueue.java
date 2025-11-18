@@ -4,41 +4,40 @@ import java.util.Queue;
 
 
 public class StackOnQueue {
-    // Основная очередь хранит элементы так, что "голова" = вершина стека
+    // Основная очередь
     private Queue<Integer> qMain = new LinkedList<>();
-    // Вспомогательная очередь используется при операции push
+    // Вспомогательная очередь (используется при вызове push)
     private Queue<Integer> qHelp = new LinkedList<>();
 
-    /** Помещает элемент x на вершину стека. */
+    // Помещает элемент x в конец стека
     public void push(int x) {
-        // 1) Кладём новый элемент во вспомогательную очередь
-        qHelp.offer(x);
-        // 2) Перегружаем в неё все старые элементы, сохраняя порядок
+        qHelp.offer(x);  // кладем новый элемент в вспомогательную очередь
+
+        // Перекладываем элементы из основной очереди в вспомогательную
         while (!qMain.isEmpty()) {
             qHelp.offer(qMain.poll());
         }
-        // 3) Меняем местами очереди — теперь qMain снова "главная"
+        // Меняем местами очереди
         Queue<Integer> tmp = qMain;
         qMain = qHelp;
         qHelp = tmp;
     }
 
-    /** Удаляет верхний элемент и возвращает его. */
+    // Удаляет последний элемент и возвращает его
     public int pop() {
         if (qMain.isEmpty()) {
-            throw new NoSuchElementException("pop() from empty stack");
+            throw new NoSuchElementException("pop() неприменим к пустому стеку");
         }
         return qMain.poll();
     }
 
-    // Возвращает верхний элемент без удаления
+    // Возвращает последний элемент без удаления
     public int top() {
         if (qMain.isEmpty()) {
-            throw new NoSuchElementException("top() from empty stack");
+            throw new NoSuchElementException("top() неприменим к пустому стеку");
         }
-        Integer v = qMain.peek();
         // peek() может вернуть null только если очередь пуста, что уже проверено
-        return v;
+        return qMain.peek();
     }
 
     // Возвращает true, если стек пуст
@@ -49,13 +48,13 @@ public class StackOnQueue {
     // Строковое представление элементов стека от вершины к основанию
     public String asString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Stack[top->bottom]: [");
+        sb.append("Стек: [");
         int n = qMain.size();
         for (int i = 0; i < n; i++) {
-            Integer v = qMain.poll();   // снять голову
+            Integer v = qMain.poll();
             sb.append(v);
             if (i < n - 1) sb.append(", ");
-            qMain.offer(v);             // вернуть в хвост (вращаем очередь)
+            qMain.offer(v);
         }
         sb.append("]");
         return sb.toString();
