@@ -1,17 +1,31 @@
 public class Main {
     public static void main(String[] args) {
-        Image image1 = new ProxyImage("photo1.jpg");
-        Image image2 = new ProxyImage("photo2.png");
+        // Создаём цепочку логгеров
+        Logger debugLogger = new DebugLogger(LogLevel.DEBUG);
+        Logger infoLogger = new InfoLogger(LogLevel.INFO);
+        Logger warningLogger = new WarningLogger(LogLevel.WARNING);
+        Logger errorLogger = new ErrorLogger(LogLevel.ERROR);
+        Logger criticalLogger = new CriticalLogger(LogLevel.CRITICAL);
 
-        // Изображение еще не загружено на данном этапе
-        System.out.println("Созданы прокси-изображения.");
-        System.out.println("Первый вызов display() для photo1.jpg:");
-        image1.display(); // загрузка и отображение
+        // Собираем цепочку
+        debugLogger.setNext(infoLogger);        // INFO следующий для DEBUG
+        infoLogger.setNext(warningLogger);      // WARNING - для INFO
+        warningLogger.setNext(errorLogger);     // ERROR - для WARNING
+        errorLogger.setNext(criticalLogger);    // CRITICAL - для ERROR
 
-        System.out.println("\nВторой вызов display() для photo1.jpg:");
-        image1.display(); // только отображение, так как image1 уже загружено
+        // Тестируем разные уровни
+        debugLogger.log(LogLevel.DEBUG, "Отладочное сообщение");
+        System.out.println("---------------------------------------------------------------------");
 
-        System.out.println("\nВызов display() для photo2.png:");
-        image2.display(); // новое изображение — загружается и отображается
+        debugLogger.log(LogLevel.INFO, "Информационное сообщение");
+        System.out.println("---------------------------------------------------------------------");
+
+        debugLogger.log(LogLevel.WARNING, "Предупреждение");
+        System.out.println("---------------------------------------------------------------------");
+
+        debugLogger.log(LogLevel.ERROR, "Ошибка");
+        System.out.println("---------------------------------------------------------------------");
+
+        debugLogger.log(LogLevel.CRITICAL, "Критическая ошибка");
     }
 }
