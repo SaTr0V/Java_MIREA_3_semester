@@ -3,6 +3,14 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+// Для добавления заметки, запустите сервер и в терминале введите команду:
+// curl -X POST http://localhost:8080/add -d "First note"
+
+// Просмотр заметок доступен либо по ссылке в браузере, либо по команде:
+// curl http://localhost:8080/notes
+
+// Замена осуществляется по индексу следующей командой:
+// curl -X POST "http://localhost:8080/edit?index=0&text=New_first_note"
 public class NoteHttpServer {
     private static final int PORT = 8080;
     private static final List<String> notes = new ArrayList<>();
