@@ -71,7 +71,7 @@
 | № задачи | Описание задачи | Ветка | Статус |
 | :--- | :--- | :--- | :--- |
 | **#1** | Редактирование заметок на HTTP-сервере (вариант 1). | [`pr_8_1`](https://github.com/SaTr0V/Java_MIREA_3_semester/tree/pr_8_1) | ✅ Завершено |
-| **#2** | To-Do List на Spring Boot (вариант 1). | [`pr_8_2`](https://github.com/SaTr0V/Java_MIREA_3_semester/tree/pr_8_2) | ❌ Не приступал |
+| **#2** | To-Do List на Spring Boot (вариант 1). | [`pr_8_2`](https://github.com/SaTr0V/Java_MIREA_3_semester/tree/pr_8_2) | ✅ Завершено |
 
 ## 👀 Как посмотреть решение задачи?
 
@@ -83,12 +83,6 @@
 ```bash
 git clone -b pr_2_3 --single-branch https://github.com/SaTr0V/Java_MIREA_3_semester.git
 ```
-
-## 💻 Технологии
-
-*   Java
-*   IntelliJ IDEA
-*   Git / GitHub
 
 ---
 *Решения выложены в учебных целях.*
